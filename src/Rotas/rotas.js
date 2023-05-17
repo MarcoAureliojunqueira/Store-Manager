@@ -13,4 +13,5 @@ rotas.get('/sales', controlerSales.productsSales);
 rotas.get('/sales/:id', controlerSales.productsSalesID);
 
 rotas.put('/products/:id', validName, controlerProduts.uptadeProdut);
+rotas.delete('/products/:id', controlerProduts.removeProdut);
 module.exports = rotas;

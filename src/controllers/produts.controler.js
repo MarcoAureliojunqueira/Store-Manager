@@ -28,11 +28,19 @@ const uptadeProdut = async (req, res) => {
   if (type) return res.status(404).json({ message });
   return res.status(200).json(message);
 };
+const removeProdut = async (req, res) => {
+  const { id } = req.params;
+  const remove = await serviceProdut.deleteProdut(Number(id));
+  const { type, message } = remove;
+  if (type) return res.status(404).json({ message });
+  return res.status(204).json();
+};
 
 module.exports = {
   product,
   productId,
   insertId,
   uptadeProdut,
+  removeProdut,
   
 };

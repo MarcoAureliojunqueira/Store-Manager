@@ -37,7 +37,21 @@ const uptadeProdut = async (id, name) => {
     message: products,
   };
 };
+const deleteProdut = async (id) => {
+  const affectedRows = await modelProdut.removeId(id);
 
+  if (!affectedRows) {
+    return {
+      type: 404,
+      message: 'Product not found',
+    };
+  }
+  const products = await modelProdut.productsId(id);
+  return {
+    type: null,
+    message: products,
+  };
+};
 module.exports = {
   product,
   productId,
@@ -45,4 +59,5 @@ module.exports = {
   productsSales,
   productsSalesID,
   uptadeProdut,
+  deleteProdut,
 };
