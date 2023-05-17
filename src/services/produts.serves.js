@@ -10,9 +10,9 @@ const productId = async (id) => {
   return products;
 };
 
-const insertId = async (name) => {
-  const createInsert = await modelProdut.insertName(name);
-  return createInsert;
+const insertId = async (newProdut) => {
+  const createInsert = await modelProdut.insertName(newProdut);
+  return { id: createInsert, name: newProdut.name };
 };
 
 module.exports = {

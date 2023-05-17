@@ -116,16 +116,16 @@
     "colId": "history",
     "containerId": "",
     "name": "localhost:3001/products/",
-    "url": "localhost:3001/products/1",
-    "method": "GET",
+    "url": "localhost:3001/products",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-05-16T23:30:03.167Z",
-    "modified": "2023-05-17T11:37:55.442Z",
+    "modified": "2023-05-17T12:32:38.316Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n    \"id\": 4,\n    \"name\": \"Martelo de Tho\"\n  }",
+      "raw": "{\n    \"name\": \"Martelo de Tho\"\n  }",
       "form": []
     },
     "tests": []
