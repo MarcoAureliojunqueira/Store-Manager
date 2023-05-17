@@ -23,6 +23,14 @@ describe("Testes da services ", function () {
     expect(result).to.be.deep.equal( mockId );
    
   });
+  
+  it("Testes dos servies ", async function () {
+    sinon.stub(modelProdut, "insertName").resolves(4);
+    // Act
+    const result = await productService.insertId({name: 'm'});
+    // Assert
+    expect(result).to.be.deep.equal({ id: 4, name: "m" });
+  });
 });
 
 afterEach(function () {

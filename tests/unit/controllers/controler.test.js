@@ -22,20 +22,37 @@ describe("Testes do controller  ", function () {
 
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(mockAllProducts[0]);
-
   });
 
-   it("Testes dos servies id", async function () {
-   const res = {};
-   const req = { params: { id: 1 } };
+  it("Testes dos servies id", async function () {
+    const res = {};
+    const req = { params: { id: 1 } };
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productService, "productId").resolves(mockId[0]);
+    await controller.productId(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith(mockId[0]);
+  });
+
+   it("Testes de inserir Produto", async function () {
+      const res = {};
+    const req = { body: { name: 'm' } };
    res.status = sinon.stub().returns(res);
-   res.json = sinon.stub().returns();
+    res.json = sinon.stub().returns();
 
-   sinon.stub(productService, "productId").resolves(mockId[0]);
-   await controller.productId(req, res);
+     sinon
+       .stub(productService, "insertId")
+       .resolves({ id: 5, name: "Martelo de Tho" });
+     await controller.insertId(req, res);
 
-   expect(res.status).to.have.been.calledWith(200);
-   expect(res.json).to.have.been.calledWith(mockId[0]);
+     expect(res.status).to.have.been.calledWith(201);
+     expect(res.json).to.have.been.calledWith({
+       id: 5,
+       name: "Martelo de Tho",
+     });
    });
 });
 
