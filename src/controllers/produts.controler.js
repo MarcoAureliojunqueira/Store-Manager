@@ -17,7 +17,7 @@ const productId = async (req, res) => {
 const insertId = async (req, res) => {
   const name = req.body;
   const result = await serviceProdut.insertId(name);
-  console.log(result);
+   
   return res.status(201).json(result);
 };
 const uptadeProdut = async (req, res) => {
@@ -35,12 +35,24 @@ const removeProdut = async (req, res) => {
   if (type) return res.status(404).json({ message });
   return res.status(204).json();
 };
-
+const productName = async (req, res) => {
+  const { q } = req.query;
+  if (q === '') {
+    const all = await serviceProdut.product();
+    return res.status(200).json(all);
+  }
+  const products = await serviceProdut.productName(q);
+  const { type, message } = products;
+console.log(q);
+  if (type) return res.status(404).json({ message });
+  return res.status(200).json([message]);
+};
 module.exports = {
   product,
   productId,
   insertId,
   uptadeProdut,
   removeProdut,
+  productName,
   
 };

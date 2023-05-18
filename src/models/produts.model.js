@@ -36,5 +36,12 @@ const removeId = async (id) => {
   );
   return affectedRows;
 };
+const productsName = async (name) => {
+  const [[result]] = await connection.execute(
+    'SELECT * FROM StoreManager.products WHERE name LIKE ?  ',
+    [`%${name}%`],
+  ); 
+  return result;
+};
  
-module.exports = { produtos, productsId, insertName, updateProdutId, removeId };
+module.exports = { produtos, productsId, insertName, updateProdutId, removeId, productsName };

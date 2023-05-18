@@ -3,6 +3,7 @@ const validarProduto = require('../middlewares/validadeProduto');
 
 const productsSales = async () => {
   const products = await salesProdut.productsSales();
+  console.log(products, 'test');
   return products;
 };
 const productsSalesID = async (id) => {

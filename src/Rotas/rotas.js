@@ -7,6 +7,7 @@ const { validandoSales, validandoQuantity } = require('../middlewares/validation
 const rotas = express.Router();
 
 rotas.get('/products', controlerProduts.product);
+rotas.get('/products/search', controlerProduts.productName);
 rotas.get('/products/:id', controlerProduts.productId);
 
 rotas.post('/products', validName, controlerProduts.insertId);

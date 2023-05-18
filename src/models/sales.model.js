@@ -33,7 +33,6 @@ const updateSales = async (id, { quantity, productId }) => {
     ' UPDATE StoreManager.sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?;',
     [quantity, id, productId],
   );
-  console.log(affectedRows);
   return affectedRows;
 };
 

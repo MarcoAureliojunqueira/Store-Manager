@@ -54,6 +54,42 @@ describe("Testes do controller  ", function () {
        name: "Martelo de Tho",
      });
    });
+  it("Testes de atualização", async function () {
+    const res = {};
+    const req = { body: { name: "m" },params:5 };
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon
+      .stub(productService, "uptadeProdut")
+      .resolves({ id: 5, name: "Martelo de Tho" });
+    await controller.uptadeProdut(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+   // expect(res.json).to.be.eq({
+    //  name: "Martelo de Tho",
+   // });
+  });
+
+  it("Testes de Delete ", async function () {
+    const res = {};
+    const req = {  params: 5 };
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon
+      .stub(productService, "deleteProdut")
+      .resolves({
+    type: null,
+    message: 'products',
+  });
+    await controller.removeProdut(req, res);
+
+    expect(res.status).to.have.been.calledWith(204);
+    // expect(res.json).to.be.eq({
+    //  name: "Martelo de Tho",
+    // });
+  });
 });
 
 afterEach(function () {
